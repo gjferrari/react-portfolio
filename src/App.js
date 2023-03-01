@@ -1,4 +1,31 @@
+import React, { useState, useEffect } from "react";
 
+import Navbar from "./compontents/navigation";
+import About from "./components/about";
+import Projects from "./components/project";
+import Footer from "./components/footer";
+// import "./style.css";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+const App = () => {
+  return (
+    <Router>
+      <Preloader load={load} />
+      <div className="App" id={load ? "no-scroll" : "scroll"}>
+        <Navbar />
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/project" element={<Projects />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
+  );
+};
 
 export default App;
 
